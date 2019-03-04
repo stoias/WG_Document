@@ -10,14 +10,36 @@
 
   1. getDefaultSharedPrefarencesで共有プリファレンス取得
   2. putInt,putStringとかでデータを登録
-  3. .appky()で保存
+  3. .apply()で保存
      ※2,3は「.」でつなげて記述できる
      
 - 加速度センサーを利用したアプリ作成
 
 # 気付き
-- ラムダ関数
-  
+- ラムダ式
+```
+fun test(x:Int, l:(Int) -> Int):Int{
+ return l(x)
+}
+```
+がKotlinだとreturnと{}が省略できて
+```
+fun test(x:Int,l:(Int) -> Int):Int = l(x)
+```
+になる。
+戻り値の型が推測できるとさらに以下になる。
+```
+fun test(x:Int,l:(Int) -> Int) = l(x)
+```
+  - 結果
+    - test(5,{it * 2}) → 10
+    - test(5,{it + 1}) → 6
+ 
+ラムダ式は{it*1}の部分？
+
+https://qiita.com/sano1202/items/64593e8e981e8d6439d3  
+`ラムダ式とはインターフェースを実装したインスタンスを生成する式`  
+`ラムダ式で使用できるのは抽象メソッドが一つのインターフェースのみ`  
 
 # 問題点(ハマったこと)
 - SurfaceHolderのインスタンスが取得できない
